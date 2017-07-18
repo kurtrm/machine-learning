@@ -1,7 +1,7 @@
-#Machine Learning
+# Machine Learning
 Kurt Maurer
 
-##Purpose
+## Purpose
 This repo is dedicated to the purpose of learning the data analysis tools available in Python.
 
 ## Analyzing Boston Housing Market Data
@@ -36,6 +36,16 @@ I downloaded the Fremont Bridge northbound and southbound bike count data in a c
 southbound bike count, and the hour of the day. I also downloaded the NOAA precipitation file for the Seattle area and attempted to find a relationship
 between precipitation and the number of bikes crossing the bridge. Both contain errors that need to be fixed to be used, or at least to be put into a
 datbase.
+
+#### My Process
+    - Read the csv files into the Jupyter Notebook
+    - Determine null values and filled with median values
+    - Grouped bike count data by month. I consider doing this by day,
+      but there was going to be far too many data points to be practical (for this project).
+    - Reformatted date columns to proper datetime formats.
+    - Merged NOAA precipitation and bike counts on date.
+    - Plotted the data using Pandas and Matplotlib.
+    
 
 ### Source
 seattle.data.gov
