@@ -1,0 +1,7 @@
+[run]
+source = 
+    src/decision_tree.py
+omit = 
+    src/test_decision_tree.py
+[report]
+show_missing = True
