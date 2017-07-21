@@ -37,6 +37,13 @@ golf = [{"outlook": "Rainy", "temp": "Hot", "humidity": "High",
 golf = golf.DataFrame(golf)
 
 
+def test_init_decision_tree(golf):
+    """Test the basic initialization logic."""
+    from decision_tree import DecisionTree
+    tree = DecisionTree(data=golf)
+    assert tree == tree
+
+
 @pytest.fixture
 def decision_tree():
     """Traditional data set for ID3 algorithm."""
