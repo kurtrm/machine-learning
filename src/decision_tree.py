@@ -19,8 +19,10 @@ class DecisionTree():
             raise TypeError('Data must be a list/tuple'
                             'of records or a Pandas DataFrame.')
         elif type(data) in [tuple, list]:
+            # import pdb; pdb.set_trace()
             self.data = pd.DataFrame(data)
-        self.data = data
+        else:
+            self.data = data
 
     def fit(self, target):
         """Construct decision tree with the data set."""
@@ -30,23 +32,22 @@ class DecisionTree():
         """Return labels for test data."""
         pass
 
-    def entropy(self, probabilities):
-        """Given a probability, calculate class probabilities 
-        for a given attribute.
-        """
-        return sum(-p * np.log2(p) for p in probabilities if p)
-
     def class_probabilities(self, column, target=None):
         """Calculate the proportions of classes within a column
         to the length of the entire data set.
         """
         if not target:
-            return [self.data[column].value_counts(normalize=True)
-                                     .values for column in self.data]
+            return self.data[column].value_counts(normalize=True)
         classes = self.data[column].unique()
         return [self.data[target]
                 .where(self.data[column] == one_class)
                 for one_class in classes]
+
+    def entropy(self, probabilities):
+        """Given a probability, calculate class probabilities 
+        for a given attribute.
+        """
+        return sum(-p * np.log2(p) for p in probabilities if p)
 
     def information_gain(self, column, target):
         """Calculate the information gain for a given subset
