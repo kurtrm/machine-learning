@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/kurtrm/machine-learning.svg?branch=master)](https://travis-ci.org/kurtrm/machine-learning)
+[![Build Status](https://travis-ci.org/kurtrm/machine-learning.svg?branch=decision-tree)](https://travis-ci.org/kurtrm/machine-learning)
 [![Coverage Status](https://coveralls.io/repos/github/kurtrm/machine-learning/badge.svg?branch=decision-tree)](https://coveralls.io/github/kurtrm/machine-learning?branch=decision-tree)
 
 # Machine Learning
