@@ -3,5 +3,6 @@ source =
     src/decision_tree.py
 omit = 
     src/test_decision_tree.py
+    notebooks/
 [report]
 show_missing = True
