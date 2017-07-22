@@ -41,6 +41,7 @@ class DecisionTree():
         classes = self.data[column].unique()
         return [self.data[target]
                 .where(self.data[column] == one_class)
+                .value_counts(normalize=True)
                 for one_class in classes]
 
     def entropy(self, probabilities):

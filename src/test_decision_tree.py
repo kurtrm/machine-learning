@@ -136,11 +136,18 @@ def test_entropy_using_class_probabilities(decision_tree):
 
 def test_class_probabilities_with_target(decision_tree):
     """Test that this returns the correct values with a target."""
-    class_probs = [decision_tree.class_probabilities(column)
-                   for column in decision_tree.data]
+    subset_probs_known = [[{0.0: 0.5714285714285714, 1.0: 0.42857142857142855},
+                           {0.0: 0.14285714285714285, 1.0: 0.8571428571428571}],
+                          [{0.0: 0.59999999999999998, 1.0: 0.40000000000000002},
+                           {1.0: 1.0},
+                           {0.0: 0.40000000000000002, 1.0: 0.59999999999999998}],
+                          [{0.0: 0.5, 1.0: 0.5},
+                           {0.0: 0.33333333333333331, 1.0: 0.66666666666666663},
+                           {0.0: 0.25, 1.0: 0.75}],
+                          [{0.0: 0.25, 1.0: 0.75}, {0.0: 0.5, 1.0: 0.5}]]
     list_of_subset_probs = [decision_tree.class_probabilities(column, 'golf')
                             for column in decision_tree.data
-                            if not column == decision_tree.data.golf]
-
-    
-    # entropies = [decision_tree.entropy(prob) for prob in class_probs]
+                            if not column == 'golf']
+    subset_dicts = [[item.to_dict() for item in result] for result in list_of_subset_probs]
+    for idx, prob in enumerate(subset_dicts):
+        np.testing.assert_equal(prob[1], subset_probs_known[idx][1])
