@@ -151,3 +151,4 @@ def test_class_probabilities_with_target(decision_tree):
     subset_dicts = [[item.to_dict() for item in result] for result in list_of_subset_probs]
     for idx, prob in enumerate(subset_dicts):
         np.testing.assert_equal(prob[1], subset_probs_known[idx][1])
+
