@@ -33,15 +33,15 @@ class DecisionTree():
         pass
 
     def class_probabilities(self, column, target=None):
-        """Calculate the proportions of classes within a column
+        """Calculate the proportions of values within a column
         to the length of the entire data set.
         """
         if not target:
-            return self.data[column].value_counts(normalize=True)
+            return self.data[column].value_counts(normalize=True, sort=False)
         classes = self.data[column].unique()
         return [self.data[target]
                 .where(self.data[column] == one_class)
-                .value_counts(normalize=True)
+                .value_counts(normalize=True, sort=False)
                 for one_class in classes]
 
     def entropy(self, probabilities):
@@ -50,12 +50,13 @@ class DecisionTree():
         """
         return sum(-p * np.log2(p) for p in probabilities if p)
 
-    def information_gain(self, column, target):
+    def information_gain(self, root_node, candidate_node, target):
         """Calculate the information gain for a given subset
         of data.
         """
-        set_entropy = self.entropy(target)
-        attribute_proportion = self.class_probabilities(column)
-        class_proportion = self.class_probabilities(column, target)
-        return set_entropy - sum(attribute_proportion * self.entropy(prop)
+        import pdb; pdb.set_trace()
+        set_entropy = self.entropy(self.class_probabilities(root_node))
+        attribute_proportion = self.class_probabilities(candidate_node)
+        class_proportion = self.class_probabilities(candidate_node, target)
+        return set_entropy - sum(attribute_proportion * self.entropy(prop.values)
                                  for prop in class_proportion)
